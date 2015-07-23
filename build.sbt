@@ -13,3 +13,6 @@ libraryDependencies ++= Seq(
   javaWs,
   "org.postgresql" % "postgresql" % "9.3-1102-jdbc4"
 )
+
+
+fork in run := true

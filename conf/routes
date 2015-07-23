@@ -1,11 +1,17 @@
 # Routes
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
+# Login
+GET     /							controllers.LoginController.index()
+
+GET     /signup                  	controllers.LoginController.signup()
 
 # Home page
-GET     /                           controllers.Application.index()
+GET     /index						controllers.Application.index()
 
 GET     /dashboard                  controllers.Application.dashboard()
+
+GET     /search						controllers.Application.search()
 
 POST    /student                    controllers.Application.addStudent()
 

@@ -29,6 +29,10 @@ public class Application extends Controller {
         return ok(dashboard.render(""));
     }
 
+    public static Result search() {
+        return ok(booksearch.render(""));
+    }
+
     // Adding a student to your model/table
     public static Result addStudent() {
     	Student student = Form.form(Student.class).bindFromRequest().get();

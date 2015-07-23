@@ -12,7 +12,7 @@
 		<link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/bootstrap-theme.css")">
     </head>
     <body>
-	    <nav class="navbar navbar-inverse navbar-fixed-top">
+	   <nav class="navbar navbar-inverse navbar-fixed-top">
 	      <div class="container">
 	        <div class="navbar-header">
 	          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -32,10 +32,7 @@
 	        </div><!--/.nav-collapse -->
 	      </div>
 	    </nav>
-
-	    <div class="container">
-	       @content
-	    </div><!-- /.container -->
+	    @content
         <script src="@routes.Assets.at("javascripts/hello.js")" type="text/javascript"></script>
     	<script type='text/javascript' src='@routes.Assets.at("javascripts/jquery-1.11.3.min.js")'></script>
     	<script type='text/javascript' src='@routes.Assets.at("javascripts/bootstrap.min.js")'></script>
