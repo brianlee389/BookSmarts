@@ -1,4 +1,4 @@
-create table Users (
+create table "User" (
 	username varchar(64) PRIMARY KEY,
 	name varchar(64) NOT NULL,
 	email varchar(64) NOT NULL UNIQUE,

@@ -10,9 +10,9 @@ import javax.persistence.Table;
 import play.db.ebean.Model;
 
 @Entity
-@Table(name = "User")
+@Table(name = "\"User\"")
 public class User extends Model {
-
+	@Id
 	public String username;
 
 	public String name;
@@ -20,4 +20,5 @@ public class User extends Model {
 	public String email;
 
 	public String password;
+
 }

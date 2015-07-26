@@ -1,6 +1,7 @@
 package controllers;
 
 import play.*;
+import models.User;
 import play.data.DynamicForm;
 import play.data.Form;
 import play.db.DB;
@@ -8,7 +9,7 @@ import play.db.ebean.Model;
 import play.mvc.*;
 import utils.DBUtils;
 import views.html.*;
-
+/*import play.mvc.Http.RequestBody;*/
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -33,8 +34,12 @@ public class LoginController extends Controller {
     }
 
     public static Result createUser() {
-    	/*Student student = Form.form(Student.class).bindFromRequest().get();
-    	student.save();*/
-        return redirect(routes.Application.index());
+        User user = Form.form(User.class).bindFromRequest().get();
+        user.save();
+        /*
+        DynamicForm bindedForm = Form.form().bindFromRequest();
+        bindedForm.get("username").toString();
+        */
+        return ok(index.render(user.username + user.name + user.email + user.password));
     }
 }

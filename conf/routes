@@ -6,6 +6,8 @@ GET     /							controllers.LoginController.index()
 
 GET     /signup                  	controllers.LoginController.signup()
 
+POST    /createUser                 controllers.LoginController.createUser()
+
 # Home page
 GET     /index						controllers.Application.index()
 
