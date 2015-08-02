@@ -1,0 +1,25 @@
+
+insert into authored values
+  ('0137903871', 'Jeffrey Ullman'),
+  ('0201000237', 'Alfred Aho'),
+  ('0201000237', 'Jeffrey Ullman'),
+  ('0201000237', 'John Hopcroft'),
+  ('0321455363', 'John Hopcroft'),
+  ('0321455363', 'Rajeev Motwani'),
+  ('0321455363', 'Jeffrey Ullman'),
+  ('0131873253', 'Hector Garcia-Molina'),
+  ('0131873253', 'Jeffrey Ullman'),
+  ('0131873253', 'Jennifer Widom'),
+  ('0201100886', 'Alfred Aho'),
+  ('0201100886', 'Ravi Sethi'),
+  ('0201100886', 'Jeffrey Ullman'),
+  ('0134190440', 'Brian Kernigan'),
+  ('0134190440', 'Alan A. Donovan'),
+  ('0131103628', 'Brian Kernigan'),
+  ('0131103628', 'Dennis Ritchie'),
+  ('0262541327', 'Andrea diSessa'),
+  ('0262010631', 'Harold Abelson'),
+  ('0262010631', 'Andrea diSessa'),
+  ('0262510871', 'Harold Abelson'),
+  ('0262510871', 'Gerald Jay Sussman');
+
