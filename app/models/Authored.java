@@ -21,8 +21,8 @@ import play.db.ebean.Model;
 @Entity
 @Table(name = "Authored")
 public class Authored extends Model {
-	@Id
 	public String author_id;
+	@Id
 	public String book_isbn;
 	public String authored_at;
 

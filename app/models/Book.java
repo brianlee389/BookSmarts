@@ -51,4 +51,28 @@ public class Book extends Model {
 			}
 			return res;
 	 }
+
+	 public ArrayList<HashMap<String, String>> getAuthors() {
+			Connection conn = DB.getConnection();
+			ArrayList<HashMap<String, String>> res = new ArrayList<HashMap<String, String>>();
+			String sql = "select author_id, name from Authored join Authors on Authored.author_id = Authors.id where book_isbn = '" + this.isbn + "'";
+			try {
+				Statement st = conn.createStatement();
+				ResultSet rs = st.executeQuery(sql);
+				while (rs.next()) {
+					HashMap<String,String> map = new HashMap<String, String>(); 
+					map.put("id", rs.getString(1));
+					map.put("name", rs.getString(2));
+					res.add(map);
+				}
+				rs.close();
+				st.close();
+
+				DBUtils.closeDBConnection(conn);
+			} catch (SQLException sqle) {
+				sqle.printStackTrace();
+			}
+			return res;
+	 }
+
 }

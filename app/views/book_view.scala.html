@@ -1,7 +1,8 @@
 @(book: Book,
   vendors: java.util.ArrayList[java.util.HashMap[String,String]],
-	published: Published
-	)
+  published: Published,
+  authors: java.util.ArrayList[java.util.HashMap[String,String]]
+)
 
 @main("Notifications") {
 	<style type="text/css">
@@ -14,13 +15,16 @@
 	</div>
 
 	<div class="row" style="margin-top:50px;">
-		<p>Authors: Vendor.getAuthors(isbn)</p>
-		<p>Publisher: @published.publisher_name</p>
+		<p>Authors:
+			@for(a <- authors) {
+			<a href='/authors/@a.get("id")'>@a.get("name")</a>&nbsp;
+			}</p>
+		<p>Publisher: <a href='/publishers/@published.publisher_name'>@published.publisher_name</a></p>
 	</div>
 
 	<div class="row" style="margin-top:50px;">
 		<div class="panel panel-default">
-		  <div class="panel-heading">Vendors - @book.name</div>
+		  <div class="panel-heading">Known Vendors</div>
 
 		  <!-- Table -->
 	  	<table class="table">
