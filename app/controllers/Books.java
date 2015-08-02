@@ -27,7 +27,7 @@ public class Books extends Controller {
         for(Book b : bookList ) {
         	names = names + b.name;
         }
-        return ok(books.render(names));
+        return ok(books.render("", bookList));
     }
 
 }

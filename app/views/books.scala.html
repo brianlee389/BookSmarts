@@ -1,4 +1,4 @@
-@(message: String)
+@(message: String, booklist: List[Book])
 
 @main("Notifications") {
 	<style type="text/css">
@@ -7,8 +7,7 @@
 		}
 	</style>
     <div class="page-header">
-	  <h1>Notifications</h1>
-	  @message
+	  <h1>Books</h1>
 	</div>
 	<div></div>
 	<div class="row">
@@ -38,22 +37,16 @@
 	  				<th></th>
 	  			</tr>
 	  		</thead>
-  			<tr>
-  				<td>Book Name</td>
-  				<td>Book Isbn</td>
-  				<td>Publisher</td>
-  				<td>Authors</td>
-  				<td>Price</td>
-  				<td><button class="btn btn-primary">Create Notification</button></td>
-  			</tr>
-  			<tr>
-  				<td>Book Name</td>
-  				<td>Book Isbn</td>
-  				<td>Publisher</td>
-  				<td>Authors</td>
-  				<td>Price</td>
-  				<td><button class="btn btn-primary">Create Notification</button></td>
-  			</tr>
+	  		@for(b <- booklist) {
+	  			<tr>
+	  				<td>@b.name</td>
+	  				<td>@b.isbn</td>
+	  				<td>Publisher</td>
+	  				<td>Authors</td>
+	  				<td>Price</td>
+	  				<td><button class="btn btn-primary">Create Notification</button></td>
+	  			</tr>
+  			}
   		</table>
 		</div>
 	</div>
