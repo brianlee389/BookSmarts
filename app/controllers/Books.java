@@ -16,8 +16,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 import static play.libs.Json.toJson;
 
@@ -28,6 +27,7 @@ public class Books extends Controller {
 
         return ok(books.render("", bookList));
     }
+
 
     public static Result search() {
     	String sql = "select B.name, B.isbn, string_agg(A.name, ', '), P.name"
@@ -63,5 +63,14 @@ public class Books extends Controller {
 
 		return ok(toJson(bookList));
     }
+
+	public static Result get(String isbn) {
+		Connection conn = DB.getConnection();
+
+		Book book = Book.find.byId(isbn);
+		ArrayList<HashMap<String, String>> vendors = book.getVendors();
+		return ok(book_view.render(book, vendors));
+	}
+
 
 }

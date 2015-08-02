@@ -18,6 +18,7 @@ GET     /sales						controllers.Sales.index()
 GET 	/notifications 				controllers.Notifications.index()
 
 GET 	/books 						controllers.Books.index()
+GET 	/books/:isbn 						controllers.Books.get(isbn)
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
