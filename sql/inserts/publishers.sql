@@ -1,7 +1,6 @@
 insert into publishers (name) values
   ('The MIT Press'),
-  ('Addison-Wesley Professional'),
-  ('Addison-Wesley'),
+  ('Adison-Wesley'),
   ('Prentice Hall'),
   ('Pearson'),
   ('A Bradford Book');
