@@ -132,7 +132,7 @@ public class Application extends Controller {
     }
     
     // Querying database and use a variable element in the query
-    public static Result queryGPA(String minGPA) {
+/*    public static Result queryGPA(String minGPA) {
 
     	Double gpa = Double.parseDouble(minGPA);
     	String sql = "select Student.sid, count(*) "
@@ -166,14 +166,11 @@ public class Application extends Controller {
 			sqle.printStackTrace();
 		}
     	
-
-    	table += "</table>";
-    	
     	// create an html page on the fly
     	response().setContentType("text/html");
     	return ok(table);
     	
-    }
+    }*/
     
 
 }
