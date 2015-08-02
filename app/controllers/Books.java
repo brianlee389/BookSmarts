@@ -34,7 +34,9 @@ public class Books extends Controller {
 
 			Book book = Book.find.byId(isbn);
 			ArrayList<HashMap<String, String>> vendors = book.getVendors();
-			return ok(book_view.render(book, vendors));
+			Published published_info = Published.find.byId(isbn);
+
+			return ok(book_view.render(book, vendors, published_info));
 		}
 
 }

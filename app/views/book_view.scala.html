@@ -1,4 +1,7 @@
-@(book: Book, vendors: java.util.ArrayList[java.util.HashMap[String,String]])
+@(book: Book,
+  vendors: java.util.ArrayList[java.util.HashMap[String,String]],
+	published: Published
+	)
 
 @main("Notifications") {
 	<style type="text/css">
@@ -12,7 +15,7 @@
 
 	<div class="row" style="margin-top:50px;">
 		<p>Authors: Vendor.getAuthors(isbn)</p>
-		<p>Publisher: Publisher.getPublisher(publisher)</p>
+		<p>Publisher: @published.publisher_name</p>
 	</div>
 
 	<div class="row" style="margin-top:50px;">
