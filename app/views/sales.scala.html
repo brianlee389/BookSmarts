@@ -1,0 +1,26 @@
+@(username: String)(sales: java.util.List[BookSale])
+
+@main("BookSmarts") {
+<h2>Sales for @username</h2>
+<p>Books you've sold, who you sold them to, and for how much!</p>
+<table class="table table-hover">
+	<thead>
+		<tr>
+			<th>book_isbn</th>
+			<th>vendor</th>
+			<th>amount</th>
+			<th>date</th>
+		</tr>
+	</thead>
+	<tbody>
+
+		@for(sale <- sales) {
+			<tr>
+				<td>@sale.book_isbn</td>
+				<td>@sale.price</td>
+				<td>@sale.sold_at</td>
+			</tr>
+		}
+	</tbody>
+</table>
+}

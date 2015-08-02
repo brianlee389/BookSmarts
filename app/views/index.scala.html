@@ -1,68 +1,6 @@
 @(message: String)
 
 @main("BookSmarts") {
-
 	<script type='text/javascript' src='@routes.Assets.at("js/index.js")'></script>
-	
-	<table>
-		<tr>
-			<form action="@routes.Application.addStudent()" method="post">
-			<td>Name</td>
-			<td><input type="text" name="name" /></td>
-		</tr>
-		<tr>
-			<td>GPA</td>
-			<td><input type="text" name="gpa" /></td>
-		</tr>
-		<tr>
-			<td></td>
-			<td><button>Add Student</button></td>
-			</form>
-		</tr>
-		<tr>
-			<td>--------</td>
-			<td>----------------</td>
-		</tr>
-
-		<tr>
-		  <form action="@routes.Application.getStudents()" method="get">
-			<td colspan=2><button>View Students Json</button></td>
-			</form>
-		</tr>
-	</table>
-	<h1>@message</h1>
-	<div id="students"></div>
-
-	<script>
-		document.getElementById('students').innerHTML = httpGet('/studentsTable');
-	</script>
-
-	</br></br><hr></br></br>
-
-	<table>
-		<tr>
-			<form action="@routes.Application.addTerms()" method="post">
-			<td>Names</td>
-			<td><input type="text" name="names" /></td>
-		</tr>
-		<tr>
-			<td></td>
-			<td><button>Add Terms</button></td>
-			</form>
-		</tr>
-		<tr>
-			<td>--------</td>
-			<td>----------------</td>
-		</tr>
-
-	</table>
-	
-	<div id="terms"></div>
-
-	<script>
-		document.getElementById('terms').innerHTML = httpGet('/termsTables');
-	</script>
-	
-	
-    
+	<h1>Home</h1>
 }
