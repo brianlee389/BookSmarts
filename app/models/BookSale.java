@@ -22,4 +22,5 @@ public class BookSale extends Model {
 	public String book_isbn;
 	public String sold_at;
 	public double price;
+	public int quote_id;
 }
