@@ -28,6 +28,7 @@ public class Books extends Controller {
         return ok(books.render("", bookList));
     }
 
+		/*
     public static Result search() {
     	String sql = "select B.name, B.isbn, string_agg(A.name, ', '), P.name"
 			+ "from Books B, Authors A, Authored Ad, Publishers P, Published Pd"
@@ -37,7 +38,7 @@ public class Books extends Controller {
 			+ "and Pd.publisher_name = P.name"
 			+ "group by B.name, B.isbn, P.name";
     	Connection conn = DB.getConnection();
-    	List<String> booklist = new List<String>();
+    	List<String> booklist = new ArrayList<String>();
     	String json = "";
     	try {
     	 	Statement st = conn.createStatement();
@@ -62,6 +63,7 @@ public class Books extends Controller {
 
 		return ok(toJson(bookList));
     }
+		*/
 
 	public static Result get(String isbn) {
 		Connection conn = DB.getConnection();
