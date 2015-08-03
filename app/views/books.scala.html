@@ -1,4 +1,4 @@
-@(message: String, booklist: List[Book])
+@(message: String, bookList: List[HashMap[String, String]])
 
 @main("Notifications") {
 	<style type="text/css">
@@ -13,39 +13,72 @@
 	<div class="row">
 	  <div class="col-lg-6">
 	    <div class="input-group">
-	      <input type="text" class="form-control" placeholder="Search for...">
-	      <span class="input-group-btn">
-	        <button class="btn btn-default" type="button">Search</button>
-	      </span>
+    		<input type="hidden" class="searchUrl" value='@{routes.Books.search("name", 99999)}'>
+	    	<label for="searchText">Search: </label>
+		  	<input type="text" class="form-control searchText" placeholder="Search for...">
+	    	
+	    	<label for="searchOptions">Search Options</label>
+		  	<select class="form-control searchOptions" name="searchOptions" id="searchOptions">
+			    <option value="0">Book Name</option>
+			    <option value="1">Book ISBN</option>
+			    <option value="2">Author Name</option>
+			    <option value="3">Publisher Name</option>
+		  	</select>
 	    </div><!-- /input-group -->
+	    <span class="input-group-btn">
+	    	<button class="btn btn-default search" type="button">Search</button>
+	    </span>
 	  </div><!-- /.col-lg-6 -->
 	</div><!-- /.row -->
-	<div class="row" style="margin-top:50px;">
-		<div class="panel panel-default">
-		  <!-- Default panel contents -->
-		  <div class="panel-heading">Books</div>
-
-		  <!-- Table -->
-	  	<table class="table">
-	  		<thead>
-	  			<tr>
-	  				<th>Book Name</th>
-	  				<th>Book Isbn</th>
-	  				<th>Publisher</th>
-	  				<th>Authors</th>
-	  				<th></th>
-	  			</tr>
-	  		</thead>
-	  		@for(b <- booklist) {
-	  			<tr>
-	  				<td>@b.name</td>
-	  				<td>@b.isbn</td>
-	  				<td>Publisher</td>
-	  				<td>Authors</td>
-	  				<td><button class="btn btn-primary">Create Notification</button></td>
-	  			</tr>
-  			}
-  		</table>
+		<div class="row">
+			<div class="panel panel-default">
+			  <!-- Default panel contents -->
+			  	<div class="panel-heading">Books</div>
+			  	@if(bookList != null) {
+				  <!-- Table -->
+				  	<table class="table">
+				  		<thead>
+				  			<tr>
+				  				<th>Book Name</th>
+				  				<th>Book Isbn</th>
+				  				<th>Publisher</th>
+				  				<th>Authors</th>
+				  				<th></th>
+				  			</tr>
+				  		</thead>
+				  		@for(b <- bookList) {
+				  			<tr>
+								<td><a href="#">@b.get("book_name")</a></td>
+				  				<td>@b.get("isbn")</td>
+				  				<td><a href="#">@b.get("publisher")</a></td>
+								<td><a href="#">@b.get("authors")</a></td>
+				  				<td><a class='btn btn-primary' href='@routes.Notifications.createPage("@b.get(\"isbn\")", "@b.get(\"book_name\")","drewbanin")'>Create Notification</a></td>
+								
+				  			</tr>
+			  			}
+			  		</table>
+	  			} else {
+	  				<h3>Search for a book using the search</h3>
+				}
+			</div>
 		</div>
-	</div>
+		<script>
+		(function($) {
+			$(document).ready(function() {
+				$(".search").click(function() {
+					var url = $(".searchUrl").val();
+					var text = $(".searchText").val();
+					var option = $(".searchOptions").val();
+					url = url.replace('99999', option);
+					url = url.replace('name', text);
+					if (!text) {
+						alert("Enter a value in the search field");
+					} else {
+						window.location = url;
+					}
+				});
+			});
+		})(jQuery);
+		</script>
+
 }

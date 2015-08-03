@@ -21,8 +21,24 @@ import static play.libs.Json.toJson;
 
 public class Notifications extends Controller {
 
-    public static Result index() {
-        return ok(notifications.render(""));
+    public static Result index(String username) {
+    	List<Notification> notifs = new Model.Finder(String.class, Notification.class)
+				.where().like("username", username).findList();
+
+        return ok(notifications.render(notifs));
+    }
+
+    public static Result createPage(String isbn, String bookname, String username) {
+        return ok(createnotification.render(isbn, bookname, username));
+    }
+
+    public static Result create(String username) {
+        Notification notification = Form.form(Notification.class).bindFromRequest().get();
+        notification.save();
+
+        List<Notification> notifs = new Model.Finder(String.class, Notification.class)
+				.where().like("username", username).findList();
+        return ok(notifications.render(notifs));
     }
 
 }
