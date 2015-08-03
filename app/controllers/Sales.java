@@ -28,8 +28,11 @@ public class Sales extends Controller {
 		public static Result index() {
 			Connection conn = DB.getConnection();
 
-			ArrayList<HashMap<String, String>> res = new ArrayList<HashMap<String, String>>();
 			String logged_in_user = "drewbanin";
+
+			HashMap<String, Double> stats = BookSale.saleStats(logged_in_user);
+
+			ArrayList<HashMap<String, String>> res = new ArrayList<HashMap<String, String>>();
 			String sql = "select bq.vendor_name, b.name, b.isbn, bs.price, bs.sold_at "
 				         + "from booksale bs join books b on bs.book_isbn = b.isbn "
 								 + "join bookquotes bq on bq.quote_id = bs.quote_id "
@@ -53,7 +56,7 @@ public class Sales extends Controller {
 			} catch (SQLException sqle) {
 				sqle.printStackTrace();
 			}
-			return ok(sales.render(logged_in_user, res));
+			return ok(sales.render(logged_in_user, res, stats));
 		}
 
 		public static Result create(String username, String isbn, String vendor) {

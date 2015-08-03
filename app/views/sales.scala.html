@@ -1,15 +1,18 @@
-@(username: String)(sales: java.util.ArrayList[java.util.HashMap[String,String]])
+@(username: String)(sales: java.util.ArrayList[java.util.HashMap[String,String]])(stats: java.util.HashMap[String,Double])
 
 @main("BookSmarts") {
 <h2>Sales for @username</h2>
 <p>Books you've sold, who you sold them to, and for how much!</p>
+
+
+<h3>Sale History</h3>
 <table class="table table-hover">
 	<thead>
 		<tr>
 			<th>Book</th>
 			<th>Vendor</th>
 			<th>Price</th>
-			<th>Time Ago</th>
+			<th>Sold At</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -25,4 +28,26 @@
 		}
 	</tbody>
 </table>
+
+<h3>Sale Stats</h3>
+<table class="table table-hover">
+	<thead>
+		<tr>
+			<th>Sum</th>
+			<th>Average</th>
+			<th>Min</th>
+			<th>Max</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>@stats.get("sum")</td>
+			<td>@stats.get("avg")</td>
+			<td>@stats.get("min")</td>
+			<td>@stats.get("max")</td>
+		</tr>
+	</tbody>
+</table>
+
+
 }
