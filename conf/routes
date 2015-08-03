@@ -26,5 +26,8 @@ GET 	/authors/:id 						controllers.Authors.get(id)
 GET 	/vendors 						controllers.Vendors.index()
 GET 	/vendors/:name 						controllers.Vendors.get(name)
 
+GET 	/publishers 						controllers.Publishers.index()
+GET 	/publishers/:name 						controllers.Publishers.get(name)
+
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
