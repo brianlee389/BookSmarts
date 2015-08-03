@@ -1,4 +1,4 @@
-@(message: String, booklist: List[Book])
+@(message: String, booklist: List[Book], username: String)
 
 @main("Books") {
 	<style type="text/css">
@@ -28,7 +28,7 @@
 	  			<tr>
 						<td><a href="/books/@b.isbn">@b.name</a></td>
 	  				<td>@b.isbn</td>
-	  				<td><a class='btn btn-primary' href='@routes.Notifications.createPage(b.isbn, b.name,"drewbanin")'>Create Notification</a></td>
+	  				<td><a class='btn btn-primary' href='@routes.Notifications.createPage(b.isbn, b.name)'>Create Notification</a></td>
 	  			</tr>
   			}
   		</table>

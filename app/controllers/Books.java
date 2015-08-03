@@ -24,11 +24,11 @@ public class Books extends Controller {
 
     public static Result index() {
     	List <Book> bookList = new Model.Finder(String.class, Book.class).all();
-        return ok(books.render("", bookList));
+        return ok(books.render("", bookList, session("booksmart_username")));
     }
 
     public static Result search() {
-        return ok(booksearch.render("", null));
+        return ok(booksearch.render("", null, session("booksmart_username")));
 		}
 
     public static Result do_search(String name, Integer option) {
@@ -80,7 +80,7 @@ public class Books extends Controller {
 			sqle.printStackTrace();
 		}
 
-		return ok(booksearch.render("", bookList));
+		return ok(booksearch.render("", bookList, session("booksmart_username")));
     }
 
 	public static Result get(String isbn) {
@@ -91,7 +91,7 @@ public class Books extends Controller {
 		Published published_info = Published.find.byId(isbn);
 		ArrayList<HashMap<String, String>> authors = book.getAuthors();
 
-		return ok(book_view.render(book, vendors, published_info, authors));
+		return ok(book_view.render(book, vendors, published_info, authors, session("booksmart_username")));
 	}
 
 }

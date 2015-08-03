@@ -25,6 +25,7 @@ public class Application extends Controller {
 		public static Result auth(String username, String password) {
 			List<User> valid = new Model.Finder(String.class, User.class).where().eq("username", username).eq("password", password).findList();
 			if (valid.size() == 1) {
+				session("booksmart_username", username);
 				return redirect(routes.Application.index());
 			}
 			else {
@@ -36,6 +37,8 @@ public class Application extends Controller {
 			ArrayList<HashMap<String, String>> author_stats = Author.getStats();
 			ArrayList<HashMap<String, String>> vendor_stats = Vendor.getStats();
 			ArrayList<HashMap<String, String>> publisher_stats = Publisher.getStats();
-			return ok(index.render(author_stats, vendor_stats, publisher_stats));
+
+			String username = session("booksmart_username");
+			return ok(index.render(author_stats, vendor_stats, publisher_stats, username));
 		}
 }

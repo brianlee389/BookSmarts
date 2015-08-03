@@ -28,7 +28,8 @@ public class Sales extends Controller {
 		public static Result index() {
 			Connection conn = DB.getConnection();
 
-			String logged_in_user = "drewbanin";
+			
+			String logged_in_user = session("booksmart_username");
 
 			HashMap<String, Double> stats = BookSale.saleStats(logged_in_user);
 

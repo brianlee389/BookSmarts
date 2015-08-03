@@ -1,4 +1,4 @@
-@(message: String, bookList: List[HashMap[String, String]])
+@(message: String, bookList: List[HashMap[String, String]], username: String)
 
 @main("Books") {
 	<style type="text/css">
@@ -53,7 +53,7 @@
 				  				<td>@b.get("isbn")</td>
 				  				<td><a href="#">@b.get("publisher")</a></td>
 								<td><a href="#">@b.get("authors")</a></td>
-				  				<td><a class='btn btn-primary' href='@routes.Notifications.createPage("@b.get(\"isbn\")", "@b.get(\"book_name\")","drewbanin")'>Create Notification</a></td>
+				  				<td><a class='btn btn-primary' href='@routes.Notifications.createPage("@b.get(\"isbn\")", "@b.get(\"book_name\")")'>Create Notification</a></td>
 								
 				  			</tr>
 			  			}

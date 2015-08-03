@@ -14,9 +14,9 @@ GET     /auth						controllers.Application.auth(username: String, password: Stri
 GET     /sales						controllers.Sales.index()
 POST     /sales/:username/:isbn/:vendor						controllers.Sales.create(username, isbn, vendor)
 
-GET 	/notifications				controllers.Notifications.index(username)
+GET 	/notifications				controllers.Notifications.index()
 
-GET 	/notifications/createPage 				controllers.Notifications.createPage(isbn, bookname, username)
+GET 	/notifications/createPage 				controllers.Notifications.createPage(isbn, bookname)
 
 POST 	/notifications/create 				controllers.Notifications.create()
 

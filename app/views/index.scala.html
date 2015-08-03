@@ -1,13 +1,14 @@
 @(author_stats: ArrayList[HashMap[String,String]],
 vendor_stats: ArrayList[HashMap[String,String]],
-publisher_stats: ArrayList[HashMap[String,String]]
+publisher_stats: ArrayList[HashMap[String,String]],
+username: String
 )
 
 @main("BookSmarts") {
 	<script type='text/javascript' src='@routes.Assets.at("js/index.js")'></script>
 
 <div class="jumbotron">
-	<h1>Welcome to BookSmarts!</h1>
+	<h1>Welcome to BookSmarts, @username!</h1>
 	<p><a class="btn btn-primary btn-lg" href="/books" role="button">Start Selling your Textbooks!</a></p>
 </div>
 

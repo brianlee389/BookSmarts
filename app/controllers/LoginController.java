@@ -32,6 +32,7 @@ public class LoginController extends Controller {
     public static Result createUser() {
         User user = Form.form(User.class).bindFromRequest().get();
         user.save();
+				session("booksmart_username", user.username);
         return redirect(routes.Application.index());
     }
 }

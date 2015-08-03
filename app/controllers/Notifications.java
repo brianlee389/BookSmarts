@@ -20,11 +20,12 @@ import static play.libs.Json.toJson;
 
 public class Notifications extends Controller {
 
-    public static Result index(String username) {
+    public static Result index() {
     	/*List<Notification> notifs = new Model.Finder(String.class, Notification.class)
 				.where().like("username", username).findList();
 
         return ok(notifications.render(notifs));*/
+			String username = session("booksmart_username");
     	String sql = "select B.name, B.isbn, N.username, N.price, N.date_notified, N.date_set "
 			+ "from Books B, userbooknotifications N "
 			+ "where B.isbn = N.book_isbn "
@@ -56,7 +57,8 @@ public class Notifications extends Controller {
 		return ok(notifications.render(notifs));
     }
 
-    public static Result createPage(String isbn, String bookname, String username) {
+    public static Result createPage(String isbn, String bookname) {
+				String username = session("booksmart_username");
         return ok(createnotification.render(isbn, bookname, username));
     }
 
@@ -64,7 +66,7 @@ public class Notifications extends Controller {
         Notification notification = Form.form(Notification.class).bindFromRequest().get();
         notification.save();
 
-        return redirect(routes.Notifications.index(notification.username));
+        return redirect(routes.Notifications.index());
     }
 
 }

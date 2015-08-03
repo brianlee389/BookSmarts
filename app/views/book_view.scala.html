@@ -1,7 +1,8 @@
 @(book: Book,
   vendors: java.util.ArrayList[java.util.HashMap[String,String]],
   published: Published,
-  authors: java.util.ArrayList[java.util.HashMap[String,String]]
+  authors: java.util.ArrayList[java.util.HashMap[String,String]],
+	username: String
 )
 
 @main("Notifications") {
@@ -44,7 +45,7 @@
 	  				<td>@v.get("quoted_at")</td>
 						<td><a href='@v.get("url")'>@v.get("url")</a></td>
 						<td>
-							<form method="POST" action='/sales/drewbanin/@book.isbn/@v.get("vendor")'>
+							<form method="POST" action='/sales/@username/@book.isbn/@v.get("vendor")'>
 								<button class="btn btn-success">Sell!</button>
 							</form>
 						</td>
