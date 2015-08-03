@@ -1,4 +1,4 @@
-@(notifications: List[Notification])
+@(notifs: List[HashMap[String, String]])
 
 @main("Notifications") {
 	<style type="text/css">
@@ -6,57 +6,34 @@
 			margin-top: 50px;
 		}
 	</style>
-    <div class="page-header">
-	  <h1>Notifications</h1>
+	<div class="jumbotron">
+	  <h1>COMING SOON</h1>
+	  <p>The feature that will you notify you when a vendor will offer a high enough price for your book is coming soon.
+	  <p>For now you can see what notifications you currently have set, but when this feature is released, these notifications will alert you when you get the price of the book you want. Don't worry we have enough queries.</p>
 	</div>
-	<div></div>
 	<div class="row">
-	  <div class="col-lg-6">
-	    <div class="input-group">
-	      <input type="text" class="form-control" placeholder="Search for...">
-	      <span class="input-group-btn">
-	        <button class="btn btn-default" type="button">Search</button>
-	      </span>
-	    </div><!-- /input-group -->
-	  </div><!-- /.col-lg-6 -->
-	</div><!-- /.row -->
-	<div class="row">
-		<div class="panel panel-default">
-		  <!-- Default panel contents -->
-		  <div class="panel-heading">New Notifications</div>
+		<div class="panel panel-primary">
+		  <div class="panel-heading">Set Notifications</div>
 
-		  <!-- Table -->
 		  <table class="table">
 		  		<thead>
 		  			<tr>
 		  				<th>Book Name</th>
 		  				<th>Book Isbn</th>
-		  				<th>Date Notified</th>
-		  				<th>Date Set</th>
 		  				<th>Price</th>
+		  				<th>Date Set</th>
+		  				<th>Date Notified</th>
 		  			</tr>
 		  		</thead>
-	  			<tr></tr>
-		  </table>
-		</div>
-	</div>
-	<div class="row">
-		<div class="panel panel-default">
-		  <!-- Default panel contents -->
-		  <div class="panel-heading">Set Notifications</div>
-
-		  <!-- Table -->
-  		  <table class="table">
-		  		<thead>
-		  			<tr>
-		  				<th>Book Name</th>
-		  				<th>Book Isbn</th>
-		  				<th>Date Notified</th>
-		  				<th>Date Set</th>
-		  				<th>Price</th>
-		  			</tr>
-		  		</thead>
-	  			<tr></tr>
+		  		@for(n <- notifs) {
+	  				<tr>
+	  					<td>@n.get("name")</td>
+	  					<td>@n.get("isbn")</td>
+	  					<td>@n.get("price")</td>
+	  					<td>@n.get("date_set")</td>
+	  					<td>@n.get("date_notified")</td>
+	  				</tr>
+				}
 		  </table>
 		</div>
 	</div>

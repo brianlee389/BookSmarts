@@ -21,8 +21,6 @@
 	  			<tr>
 	  				<th>Book Name</th>
 	  				<th>Book Isbn</th>
-	  				<th>Publisher</th>
-	  				<th>Authors</th>
 	  				<th></th>
 	  			</tr>
 	  		</thead>
@@ -30,8 +28,6 @@
 	  			<tr>
 						<td><a href="/books/@b.isbn">@b.name</a></td>
 	  				<td>@b.isbn</td>
-	  				<td>Publisher</td>
-	  				<td>Authors</td>
 	  				<td><a class='btn btn-primary' href='@routes.Notifications.createPage(b.isbn, b.name,"drewbanin")'>Create Notification</a></td>
 	  			</tr>
   			}
