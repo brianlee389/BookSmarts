@@ -42,7 +42,6 @@ public class Publisher extends Model {
 							+ "join authored ad on ad.book_isbn = b.isbn join authors a on a.id = ad.author_id "
 							+ "join published pd on pd.book_isbn = b.isbn join publishers p on p.name = pd.publisher_name "
 							+ "where p.name = '" + safe_name +  "' group by 1,2 order by 2 desc";
-		System.out.println(sql);
 		try {
 			Statement st = conn.createStatement();
 			ResultSet rs = st.executeQuery(sql);
