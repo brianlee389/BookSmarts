@@ -11,8 +11,6 @@ POST    /createUser                 controllers.LoginController.createUser()
 # Home page
 GET     /index						controllers.Application.index()
 
-#GET     /search						controllers.Application.search()
-
 GET     /sales						controllers.Sales.index()
 POST     /sales/:username/:isbn/:vendor						controllers.Sales.create(username, isbn, vendor)
 

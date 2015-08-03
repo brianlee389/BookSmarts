@@ -40,6 +40,6 @@ public class LoginController extends Controller {
         DynamicForm bindedForm = Form.form().bindFromRequest();
         bindedForm.get("username").toString();
         */
-        return ok(index.render(user.username + user.name + user.email + user.password));
+        return redirect(routes.Application.index());
     }
 }

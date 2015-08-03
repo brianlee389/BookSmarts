@@ -1,6 +1,68 @@
-@(message: String)
+@(author_stats: ArrayList[HashMap[String,String]],
+vendor_stats: ArrayList[HashMap[String,String]],
+publisher_stats: ArrayList[HashMap[String,String]]
+)
 
 @main("BookSmarts") {
 	<script type='text/javascript' src='@routes.Assets.at("js/index.js")'></script>
-	<h1>Home</h1>
+
+<div class="jumbotron">
+	<h1>Welcome to BookSmarts!</h1>
+	<p><a class="btn btn-primary btn-lg" href="/books" role="button">Start Selling your Textbooks!</a></p>
+</div>
+
+
+<h2>Book Stats <small>For your edification and our project requirements</small></h2>
+
+<div class="row">
+	<div class="col-md-4">
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Author</th>
+					<th># Books</th>
+				</tr>
+			</thead>
+			@for(a <- author_stats) {
+				<tr>
+					<td>@a.get("author")</td>
+					<td>@a.get("num_books")</td>
+				</tr>
+			}
+		</table>
+	</div>
+	<div class="col-md-4">
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Vendor</th>
+					<th># Books</th>
+				</tr>
+			</thead>
+			@for(v <- vendor_stats) {
+				<tr>
+					<td>@v.get("vendor")</td>
+					<td>@v.get("num_books")</td>
+				</tr>
+			}
+		</table>
+	</div>
+	<div class="col-md-4">
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Publisher</th>
+					<th># Books</th>
+				</tr>
+			</thead>
+			@for(p <- publisher_stats) {
+				<tr>
+					<td>@p.get("publisher")</td>
+					<td>@p.get("num_books")</td>
+				</tr>
+			}
+		</table>
+	</div>
+</div>
+
 }

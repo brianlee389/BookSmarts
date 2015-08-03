@@ -26,6 +26,28 @@ public class Publisher extends Model {
 
 	 public static Finder<String, Publisher> find = new Model.Finder<>(String.class, Publisher.class);
 
+ public static ArrayList<HashMap<String, String>> getStats() {
+		Connection conn = DB.getConnection();
+		ArrayList<HashMap<String, String>> res = new ArrayList<HashMap<String, String>>();
+		String sql = "select name, count(distinct(book_isbn)) from publishers join published on published.publisher_name = publishers.name group by 1;";
+		try {
+			Statement st = conn.createStatement();
+			ResultSet rs = st.executeQuery(sql);
+			while (rs.next()) {
+				HashMap<String,String> map = new HashMap<String, String>(); 
+				map.put("publisher", rs.getString(1));
+				map.put("num_books", rs.getString(2));
+				res.add(map);
+			}
+			rs.close();
+			st.close();
+
+			DBUtils.closeDBConnection(conn);
+		} catch (SQLException sqle) {
+			sqle.printStackTrace();
+		}
+		return res;
+	 }
 
  public ArrayList<HashMap<String, String>> getBooks() {
 		Connection conn = DB.getConnection();
