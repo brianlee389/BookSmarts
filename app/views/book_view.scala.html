@@ -34,6 +34,7 @@
 	  				<th>Price</th>
 	  				<th>Quoted At</th>
 	  				<th>Website</th>
+	  				<th></th>
 	  			</tr>
 	  		</thead>
 	  		@for(v <- vendors) {
@@ -42,6 +43,11 @@
 	  				<td>$@v.get("price")</td>
 	  				<td>@v.get("quoted_at")</td>
 						<td><a href='@v.get("url")'>@v.get("url")</a></td>
+						<td>
+							<form method="POST" action='/sales/drewbanin/@book.isbn/@v.get("vendor")'>
+								<button class="btn btn-success">Sell!</button>
+							</form>
+						</td>
 	  			</tr>
   			}
   		</table>

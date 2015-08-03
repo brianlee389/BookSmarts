@@ -9,6 +9,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import play.db.ebean.Model;
+import java.util.Date;
 
 @Entity
 @Table(name = "BookSale")
@@ -20,7 +21,7 @@ public class BookSale extends Model {
 	public int id;
 	public String username;
 	public String book_isbn;
-	public String sold_at;
+	public Date sold_at;
 	public double price;
 	public int quote_id;
 }

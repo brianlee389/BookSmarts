@@ -1,6 +1,6 @@
 @(message: String, booklist: List[Book])
 
-@main("Notifications") {
+@main("Books") {
 	<style type="text/css">
 		.page-header {
 			margin-top: 50px;
@@ -38,7 +38,7 @@
 	  		</thead>
 	  		@for(b <- booklist) {
 	  			<tr>
-	  				<td>@b.name</td>
+						<td><a href="/books/@b.isbn">@b.name</a></td>
 	  				<td>@b.isbn</td>
 	  				<td>Publisher</td>
 	  				<td>Authors</td>

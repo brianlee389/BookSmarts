@@ -9,7 +9,7 @@
 			<th>Book</th>
 			<th>Vendor</th>
 			<th>Price</th>
-			<th>Date</th>
+			<th>Time Ago</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -20,6 +20,7 @@
 				<td><a href='/vendors/@sale.get("vendor")'>@sale.get("vendor")</a></td>
 				<td>$@sale.get("price")</td>
 				<td>@sale.get("sold_at")</td>
+				<td>@sale.get("time_ago")</td>
 			</tr>
 		}
 	</tbody>
