@@ -1,3 +1,4 @@
+@(message: String)
 <!DOCTYPE html>
 
 <html lang="en">
@@ -52,18 +53,14 @@
 		</style>
     </head>
     <body>
+			<h1 class="text-center">@message</h1>
 		<div class="container">
-		  <form action="@routes.Application.index()" class="form-signin" method="GET">
+		  <form action="/auth" class="form-signin" method="GET">
 		    <h2 class="form-signin-heading">Please sign in</h2>
 		    <label class="sr-only">Username</label>
-		    <input id="inputEmail" class="form-control" placeholder="Username" required autofocus>
+		    <input id="inputEmail" name="username" class="form-control" placeholder="Username" required autofocus>
 		    <label for="inputPassword" class="sr-only">Password</label>
-		    <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-		    <div class="checkbox">
-		      <label>
-		        <input type="checkbox" value="remember-me"> Remember me
-		      </label>
-		    </div>
+		    <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
 		    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
 		    <div>
 				<a href="@routes.LoginController.signup()">Create Account</a>

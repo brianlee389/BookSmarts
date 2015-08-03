@@ -21,12 +21,8 @@ import static play.libs.Json.toJson;
 
 public class LoginController extends Controller {
 
-    public static Result index() {
-        return ok(login.render());
-    }
-
-    public static Result dashboard() {
-        return ok(dashboard.render(""));
+    public static Result index(String message) {
+        return ok(login.render(message));
     }
 
     public static Result signup() {
@@ -36,10 +32,6 @@ public class LoginController extends Controller {
     public static Result createUser() {
         User user = Form.form(User.class).bindFromRequest().get();
         user.save();
-        /*
-        DynamicForm bindedForm = Form.form().bindFromRequest();
-        bindedForm.get("username").toString();
-        */
         return redirect(routes.Application.index());
     }
 }

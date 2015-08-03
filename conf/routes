@@ -2,14 +2,14 @@
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
 # Login
-GET     /							controllers.LoginController.index()
+GET     /							controllers.LoginController.index(message = "")
 
-GET     /signup                  	controllers.LoginController.signup()
-
-POST    /createUser                 controllers.LoginController.createUser()
+GET     /signup                 controllers.LoginController.signup()
+POST    /createUser             controllers.LoginController.createUser()
 
 # Home page
 GET     /index						controllers.Application.index()
+GET     /auth						controllers.Application.auth(username: String, password: String)
 
 GET     /sales						controllers.Sales.index()
 POST     /sales/:username/:isbn/:vendor						controllers.Sales.create(username, isbn, vendor)

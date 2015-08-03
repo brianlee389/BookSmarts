@@ -22,6 +22,16 @@ import static play.libs.Json.toJson;
 
 public class Application extends Controller {
 
+		public static Result auth(String username, String password) {
+			List<User> valid = new Model.Finder(String.class, User.class).where().eq("username", username).eq("password", password).findList();
+			if (valid.size() == 1) {
+				return redirect(routes.Application.index());
+			}
+			else {
+        return ok(login.render("Invalid username or password!"));
+			}
+		}
+
 		public static Result index() {
 			ArrayList<HashMap<String, String>> author_stats = Author.getStats();
 			ArrayList<HashMap<String, String>> vendor_stats = Vendor.getStats();
