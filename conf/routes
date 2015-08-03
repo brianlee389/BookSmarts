@@ -14,7 +14,7 @@ GET     /index						controllers.Application.index()
 GET     /sales						controllers.Sales.index()
 POST     /sales/:username/:isbn/:vendor						controllers.Sales.create(username, isbn, vendor)
 
-GET 	/notifications/ 				controllers.Notifications.index(username)
+GET 	/notifications				controllers.Notifications.index(username)
 
 GET 	/notifications/createPage 				controllers.Notifications.createPage(isbn, bookname, username)
 
