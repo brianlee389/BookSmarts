@@ -32,13 +32,11 @@ public class Notifications extends Controller {
         return ok(createnotification.render(isbn, bookname, username));
     }
 
-    public static Result create(String username) {
+    public static Result create() {
         Notification notification = Form.form(Notification.class).bindFromRequest().get();
         notification.save();
 
-        List<Notification> notifs = new Model.Finder(String.class, Notification.class)
-				.where().like("username", username).findList();
-        return ok(notifications.render(notifs));
+        return redirect(routes.Notifications.index(notification.username));
     }
 
 }

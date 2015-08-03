@@ -18,7 +18,7 @@ GET 	/notifications/ 				controllers.Notifications.index(username)
 
 GET 	/notifications/createPage 				controllers.Notifications.createPage(isbn, bookname, username)
 
-POST 	/notifications/create 				controllers.Notifications.create(username)
+POST 	/notifications/create 				controllers.Notifications.create()
 
 GET 	/books 						controllers.Books.index()
 GET 	/books_search 						controllers.Books.search()
