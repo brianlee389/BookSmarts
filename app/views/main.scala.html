@@ -31,7 +31,7 @@
 
 							<li @if(request.path.toString().startsWith(routes.Application.index().toString())) { class="active" }><a href="@routes.Application.index()">Home</a></li>
 							<li @if(request.path.toString().startsWith(routes.Books.index().toString())) { class="active" }><a href="@routes.Books.index()">Sell Books</a></li>
-							<li @if(request.path.toString().startsWith(routes.Notifications.index().toString())) { class="active" }><a href="@routes.Notifications.index()">Notifications</a></li>
+							<li @if(request.path.toString().startsWith(routes.Notifications.index("drewbanin").toString())) { class="active" }><a href='@routes.Notifications.index("drewbanin")'>Notifications</a></li>
 							<li @if(request.path.toString().startsWith(routes.Vendors.index().toString())) { class="active" }><a href="@routes.Vendors.index()">Vendors</a></li>
 							<li @if(request.path.toString().startsWith(routes.Publishers.index().toString())) { class="active" }><a href="@routes.Publishers.index()">Publishers</a></li>
 							<li @if(request.path.toString().startsWith(routes.Authors.index().toString())) { class="active" }><a href="@routes.Authors.index()">Authors</a></li>

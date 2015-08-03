@@ -48,7 +48,8 @@
 				  		</thead>
 				  		@for(b <- bookList) {
 				  			<tr>
-								<td><a href="#">@b.get("book_name")</a></td>
+								<td><a href='/books/@b.get("isbn")'>@b.get("book_name")</a></td>
+
 				  				<td>@b.get("isbn")</td>
 				  				<td><a href="#">@b.get("publisher")</a></td>
 								<td><a href="#">@b.get("authors")</a></td>
