@@ -9,6 +9,8 @@ import play.db.ebean.Model;
 import play.mvc.*;
 import utils.DBUtils;
 import views.html.*;
+import java.util.HashMap;
+import java.util.Map;
 /*import play.mvc.Http.RequestBody;*/
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -21,10 +23,15 @@ import static play.libs.Json.toJson;
 public class Books extends Controller {
 
     public static Result index() {
-    	return ok(books.render("", null));
+    	List <Book> bookList = new Model.Finder(String.class, Book.class).all();
+        return ok(books.render("", bookList));
     }
 
-    public static Result search(String name, Integer option) {
+    public static Result search() {
+        return ok(booksearch.render("", null));
+		}
+
+    public static Result do_search(String name, Integer option) {
 		String nameType = "";
 		switch(option) {
 			case 0:
@@ -73,7 +80,7 @@ public class Books extends Controller {
 			sqle.printStackTrace();
 		}
 
-		return ok(books.render("", bookList));
+		return ok(booksearch.render("", bookList));
     }
 
 	public static Result get(String isbn) {

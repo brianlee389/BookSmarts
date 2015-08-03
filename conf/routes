@@ -11,7 +11,7 @@ POST    /createUser                 controllers.LoginController.createUser()
 # Home page
 GET     /index						controllers.Application.index()
 
-GET     /search						controllers.Application.search()
+#GET     /search						controllers.Application.search()
 
 GET     /sales						controllers.Sales.index()
 POST     /sales/:username/:isbn/:vendor						controllers.Sales.create(username, isbn, vendor)
@@ -23,9 +23,11 @@ GET 	/notifications/createPage 				controllers.Notifications.createPage(isbn, bo
 POST 	/notifications/create 				controllers.Notifications.create(username)
 
 GET 	/books 						controllers.Books.index()
+GET 	/books_search 						controllers.Books.search()
+GET 	/do_search 						controllers.Books.do_search(name, option:Integer)
 GET 	/books/:isbn 				controllers.Books.get(isbn)
 
-GET 	/books/:name/:option		controllers.Books.search(name, option:Integer)
+#GET 	/books/:name/:option		controllers.Books.search(name, option:Integer)
 
 GET 	/authors 						controllers.Authors.index()
 GET 	/authors/:id 						controllers.Authors.get(id)
