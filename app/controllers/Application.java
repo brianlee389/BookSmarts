@@ -41,4 +41,10 @@ public class Application extends Controller {
 			String username = session("booksmart_username");
 			return ok(index.render(author_stats, vendor_stats, publisher_stats, username));
 		}
+
+		public static Result logout() {
+			session().remove("booksmart_username");
+
+			return ok(login.render(""));
+		}
 }

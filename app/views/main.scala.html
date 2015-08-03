@@ -37,6 +37,8 @@
 							<li @if(request.path.toString().startsWith(routes.Publishers.index().toString())) { class="active" }><a href="@routes.Publishers.index()">Publishers</a></li>
 							<li @if(request.path.toString().startsWith(routes.Authors.index().toString())) { class="active" }><a href="@routes.Authors.index()">Authors</a></li>
 							<li @if(request.path.toString().startsWith(routes.Sales.index().toString())) { class="active" }><a href="@routes.Sales.index()">Sales</a></li>
+
+							<li><a href="@routes.Application.logout()">LOGOUT</a></li>
 						</ul>
 					</div><!--/.nav-collapse -->
 				</div>
