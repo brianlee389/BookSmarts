@@ -1,0 +1,40 @@
+@(author: Author,
+  books: java.util.ArrayList[java.util.HashMap[String,String]]
+)
+
+@main("Author - @author.name") {
+	<style type="text/css">
+		.page-header {
+			margin-top: 50px;
+		}
+	</style>
+	<div class="page-header">
+		<h1><small>@author.name</small></h1>
+	</div>
+
+	<div class="row" style="margin-top:50px;">
+		<p>born: @author.birthday</p>
+	</div>
+
+	<div class="row" style="margin-top:50px;">
+		<div class="panel panel-default">
+		  <div class="panel-heading">Authored Books</div>
+
+		  <!-- Table -->
+	  	<table class="table">
+	  		<thead>
+	  			<tr>
+	  				<th>Book</th>
+	  				<th>Authored At</th>
+	  			</tr>
+	  		</thead>
+	  		@for(b <- books) {
+	  			<tr>
+						<td><a href='/books/@b.get("isbn")'>@b.get("name")</a></td>
+	  				<td>@b.get("authored_at")</td>
+	  			</tr>
+  			}
+  		</table>
+		</div>
+	</div>
+}

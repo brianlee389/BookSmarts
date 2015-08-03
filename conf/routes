@@ -14,6 +14,7 @@ GET     /index						controllers.Application.index()
 GET     /search						controllers.Application.search()
 
 GET     /sales						controllers.Sales.index()
+POST     /sales/:username/:isbn/:vendor						controllers.Sales.create(username, isbn, vendor)
 
 GET 	/notifications/ 				controllers.Notifications.index(username)
 
@@ -25,6 +26,15 @@ GET 	/books 						controllers.Books.index()
 GET 	/books/:isbn 				controllers.Books.get(isbn)
 
 GET 	/books/:name/:option		controllers.Books.search(name, option:Integer)
+
+GET 	/authors 						controllers.Authors.index()
+GET 	/authors/:id 						controllers.Authors.get(id)
+
+GET 	/vendors 						controllers.Vendors.index()
+GET 	/vendors/:name 						controllers.Vendors.get(name)
+
+GET 	/publishers 						controllers.Publishers.index()
+GET 	/publishers/:name 						controllers.Publishers.get(name)
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)

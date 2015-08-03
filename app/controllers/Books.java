@@ -21,11 +21,8 @@ import static play.libs.Json.toJson;
 public class Books extends Controller {
 
     public static Result index() {
-    	List <Book> bookList = new Model.Finder(String.class, Book.class).all();
-
-        return ok(books.render("", null));
+    	return ok(books.render("", null));
     }
-
 
     public static Result search(String name, Integer option) {
 		String nameType = "";
@@ -54,7 +51,7 @@ public class Books extends Controller {
 			+ "and Pd.publisher_name = P.name "
 			+ "and " + nameType + " ILIKE '%" + name +"%' "
 			+ "group by B.name, B.isbn, P.name";
-		System.out.println(sql);
+
     	Connection conn = DB.getConnection();
     	List<HashMap<String, String>> bookList = new ArrayList<HashMap<String, String>>();
     	try {
@@ -84,8 +81,10 @@ public class Books extends Controller {
 
 		Book book = Book.find.byId(isbn);
 		ArrayList<HashMap<String, String>> vendors = book.getVendors();
-		return ok(book_view.render(book, vendors));
-	}
+		Published published_info = Published.find.byId(isbn);
+		ArrayList<HashMap<String, String>> authors = book.getAuthors();
 
+		return ok(book_view.render(book, vendors, published_info, authors));
+	}
 
 }

@@ -1,0 +1,33 @@
+@(publishers: List[Publisher])
+
+@main("Publishers") {
+	<style type="text/css">
+		.page-header {
+			margin-top: 50px;
+		}
+	</style>
+		<div class="page-header">
+		<h1>Publishers</h1>
+	</div>
+	<div></div>
+	<div class="row" style="margin-top:50px;">
+		<div class="panel panel-default">
+			<!-- Default panel contents -->
+			<div class="panel-heading">Publishers</div>
+
+			<!-- Table -->
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Name</th>
+					</tr>
+				</thead>
+				@for(p <- publishers) {
+					<tr>
+						<td><a href='/publishers/@p.name'>@p.name</a></td>
+					</tr>
+				}
+			</table>
+		</div>
+	</div>
+}

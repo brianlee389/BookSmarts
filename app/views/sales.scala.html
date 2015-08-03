@@ -1,27 +1,53 @@
-@(username: String)(sales: java.util.ArrayList[java.util.HashMap[String,String]])
+@(username: String)(sales: java.util.ArrayList[java.util.HashMap[String,String]])(stats: java.util.HashMap[String,Double])
 
 @main("BookSmarts") {
 <h2>Sales for @username</h2>
 <p>Books you've sold, who you sold them to, and for how much!</p>
+
+
+<h3>Sale History</h3>
 <table class="table table-hover">
 	<thead>
 		<tr>
 			<th>Book</th>
 			<th>Vendor</th>
 			<th>Price</th>
-			<th>Date</th>
+			<th>Sold At</th>
 		</tr>
 	</thead>
 	<tbody>
 
 		@for(sale <- sales) {
 			<tr>
-				<td><a href='/book/@sale.get("isbn")'>@sale.get("book")</a></td>
-				<td><a href='/vendor/@sale.get("vendor")'>@sale.get("vendor")</a></td>
+				<td><a href='/books/@sale.get("isbn")'>@sale.get("book")</a></td>
+				<td><a href='/vendors/@sale.get("vendor")'>@sale.get("vendor")</a></td>
 				<td>$@sale.get("price")</td>
 				<td>@sale.get("sold_at")</td>
+				<td>@sale.get("time_ago")</td>
 			</tr>
 		}
 	</tbody>
 </table>
+
+<h3>Sale Stats</h3>
+<table class="table table-hover">
+	<thead>
+		<tr>
+			<th>Sum</th>
+			<th>Average</th>
+			<th>Min</th>
+			<th>Max</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>@stats.get("sum")</td>
+			<td>@stats.get("avg")</td>
+			<td>@stats.get("min")</td>
+			<td>@stats.get("max")</td>
+		</tr>
+	</tbody>
+</table>
+
+
 }

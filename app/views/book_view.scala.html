@@ -1,4 +1,8 @@
-@(book: Book, vendors: java.util.ArrayList[java.util.HashMap[String,String]])
+@(book: Book,
+  vendors: java.util.ArrayList[java.util.HashMap[String,String]],
+  published: Published,
+  authors: java.util.ArrayList[java.util.HashMap[String,String]]
+)
 
 @main("Notifications") {
 	<style type="text/css">
@@ -11,13 +15,16 @@
 	</div>
 
 	<div class="row" style="margin-top:50px;">
-		<p>Authors: Vendor.getAuthors(isbn)</p>
-		<p>Publisher: Publisher.getPublisher(publisher)</p>
+		<p>Authors:
+			@for(a <- authors) {
+			<a href='/authors/@a.get("id")'>@a.get("name")</a>&nbsp;
+			}</p>
+		<p>Publisher: <a href='/publishers/@published.publisher_name'>@published.publisher_name</a></p>
 	</div>
 
 	<div class="row" style="margin-top:50px;">
 		<div class="panel panel-default">
-		  <div class="panel-heading">Vendors - @book.name</div>
+		  <div class="panel-heading">Known Vendors</div>
 
 		  <!-- Table -->
 	  	<table class="table">
@@ -27,6 +34,7 @@
 	  				<th>Price</th>
 	  				<th>Quoted At</th>
 	  				<th>Website</th>
+	  				<th></th>
 	  			</tr>
 	  		</thead>
 	  		@for(v <- vendors) {
@@ -34,7 +42,12 @@
 						<td><a href='/vendors/@v.get("vendor")'>@v.get("vendor")</a></td>
 	  				<td>$@v.get("price")</td>
 	  				<td>@v.get("quoted_at")</td>
-						<td><a href='/vendors/@v.get("url")'>@v.get("url")</a></td>
+						<td><a href='@v.get("url")'>@v.get("url")</a></td>
+						<td>
+							<form method="POST" action='/sales/drewbanin/@book.isbn/@v.get("vendor")'>
+								<button class="btn btn-success">Sell!</button>
+							</form>
+						</td>
 	  			</tr>
   			}
   		</table>
